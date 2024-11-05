@@ -11,6 +11,16 @@ void indent(int n) {
     putchar('\t');
   }
 }
+void criararquivo (const char *nomeArquivo, long i, long fibo, long tempo, long int termo){
+  FILE *arquivo = fopen(nomeArquivo, "a+");
+
+  fprintf(arquivo, "%ld;/n", i);
+    fprintf(arquivo, "%ld;/n", fibo);
+    fprintf(arquivo, "%ld;/n", tempo);
+
+
+  fclose(arquivo);
+}
 
 void fibonaccir(long int n, int nivel, long int *f, long int *f1) {
 	//indent(nivel);
@@ -37,7 +47,7 @@ void main (void) {
     struct timeval begin, end;
     gettimeofday(&begin, 0);
 
-    fibonaccir(5,0, &f, &f1);
+    fibonaccir(i,0, &f, &f1);
     printf("i = %ld\n", i);
     printf ("fibonacci: %ld \n", f);
 
@@ -48,5 +58,6 @@ void main (void) {
     long elapsed = seconds*1e6 + microseconds;
     printf("tempo: %ld\t ", elapsed);
     printf("\n----------------------------------------------\n");
+    criararquivo("fibo2",i,f,elapsed,i);
     }
 }
